@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--指定映射配置文件的命名空间，必须与接口类的包名和文件名保持一致-->
 <mapper namespace="com.itheima.big_event.mapper.ArticleMapper">
-<!--    动态sql语句-->
     <select id="list" resultType="com.itheima.big_event.pojo.Article">
         select * from article
         <where>
@@ -17,9 +15,7 @@
             </if>
         </where>
     </select>
-    <!--更新文章-->
-    <!--当有对应属性值时，才会执行该属性值的sql语句-->
-    <update id="update" >
+    <update id="update">
        update article
        <set>
            <if test="title != null">
@@ -57,8 +53,7 @@
             </if>
         </where>
     </select>
-    <!-- 统计总条数 -->
-<select id="count" resultType="java.lang.Long">
+    <select id="count" resultType="java.lang.Long">
         select count(*) from article
 
        where state = '已发布'
@@ -67,7 +62,6 @@
         </if>
     </select>
 
-    <!-- 分页查询文章 -->
     <select id="selectByPage" resultType="com.itheima.big_event.pojo.Article">
         SELECT
         id, title, cover_img, create_time,

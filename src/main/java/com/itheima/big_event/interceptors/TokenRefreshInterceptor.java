@@ -10,28 +10,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.concurrent.TimeUnit;
+
 @Component
 public class TokenRefreshInterceptor implements HandlerInterceptor {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //从请求头中获取token
         String token = request.getHeader("Authorization");
-        //判断token是否存在
         if (StringUtils.isEmpty(token)) {
             return true;
         }
-        String redisKey = RedisConstants.LONG_USER_KEY+ token;
-       Boolean exit=stringRedisTemplate.hasKey(redisKey);
+        String redisKey = RedisConstants.LONG_USER_KEY + token;
+        Boolean exit = stringRedisTemplate.hasKey(redisKey);
         if (Boolean.TRUE.equals(exit)) {
-            //刷新时间
             stringRedisTemplate.expire(redisKey, RedisConstants.TOKEN_EXPIRE_TIME, TimeUnit.MINUTES);
         }
-
         return true;
     }
-
-
-
 }

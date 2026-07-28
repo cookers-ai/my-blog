@@ -11,16 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * 日志控制器
- */
 @RestController
 @RequestMapping("/log")
 @RequireAdmin
 public class LogController {
     @Autowired
     private OperationLogQueryService operationLogQueryService;
-    //查询日志列表
+
     @RequestMapping("/query")
     public Result<PageBean<OperationLog>> queryLog(@RequestParam(defaultValue = "1") Integer pageNum,
                                                    @RequestParam(defaultValue = "10") Integer pageSize,

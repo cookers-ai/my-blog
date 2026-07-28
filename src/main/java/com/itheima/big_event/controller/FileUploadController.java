@@ -15,20 +15,10 @@ import java.util.UUID;
 public class FileUploadController {
     @Autowired
     private FNossUtil fnossUtil;
-    /**
-     * 上传文件
-     * MultipartFile file 文件对象专门接受前端上传的文件
-     * transferTo() 方法把文件内容写入到指定的文件中
-     *
-     */
     @PostMapping("/upload")
     public Result<String> upload(MultipartFile file) throws IOException {
-        //把文件内容存储到本地磁盘
         String fileName = file.getOriginalFilename();
-        //保证文件名字唯一（防止覆盖
-        //fileName.substring(fileName.lastIndexOf(".")) 获取文件扩展名
-        //UUID.randomUUID().toString() 生成随机字符串
-        String key = UUID.randomUUID().toString()+fileName.substring(fileName.lastIndexOf("."));
+        String key = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
         String url = fnossUtil.uploadFile(key, file.getInputStream());
         return Result.success(url);
     }

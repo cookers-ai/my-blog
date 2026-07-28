@@ -18,7 +18,6 @@ public class Article {
     private Integer id;
     @NotEmpty
     @Pattern(regexp = "^\\S{1,20}$")
-    //必传并且长度在1-20之间不能为空
     private String title;
     @NotEmpty
     private String content;

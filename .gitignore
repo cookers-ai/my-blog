@@ -35,3 +35,7 @@ build/
 ### Local config (contains secrets) ###
 application-local.yml
 application-local.properties
+
+### Claude / Documentation (not part of the project) ###
+*.md
+.claude/

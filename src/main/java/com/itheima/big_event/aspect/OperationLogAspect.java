@@ -20,19 +20,12 @@ import java.util.Map;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * 操作日志切面
- * ProceedingJoinPoint :用于执行被拦截的方法的执行工具
- * @Aspect : 表示这是一个切面类
- *
- */
 @Aspect
 @Component
 public class OperationLogAspect {
-    //注入操作日志Mapper
-    //用于操作数据库
     @Autowired
     private OperationLogMapper operationLogMapper;
+
     @Around("@annotation(log)")
     public Object around(ProceedingJoinPoint joinPoint, Log log) throws Throwable {
         // 1. 获取基础信息

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @MapperScan("com.itheima.big_event.mapper")
-@EnableScheduling//开启定时任务
+@EnableScheduling
 @SpringBootApplication
 public class BigEventApplication {
 
