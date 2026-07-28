@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./mvnw dependency:tree -Dincludes=org.projectlombok:lombok)",
+      "Bash(./mvnw dependency:tree -Dincludes=*:lombok*)",
+      "Read(//c/Users/21986/.m2/repository/org/projectlombok/lombok/1.18.36/**)",
+      "Bash(unzip -p ~/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar META-INF/MANIFEST.MF)",
+      "Bash(unzip *)",
+      "Bash(./mvnw versions:display-dependency-updates -Dincludes=org.projectlombok:lombok -DgenerateBackupPoms=false)",
+      "Bash(./mvnw clean *)",
+      "WebSearch",
+      "WebFetch(domain:repo.maven.apache.org)",
+      "Bash(awk -F':[' '{print $1}')",
+      "Bash(iconv -f GBK -t UTF-8)",
+      "Bash(xxd)",
+      "Read(//d/projects/my-blog-v2/**)",
+      "Bash(npm run *)",
+      "Bash(./mvnw compile *)",
+      "Bash(npx ui-ux-pro-max-cli *)"
+    ]
+  }
+}

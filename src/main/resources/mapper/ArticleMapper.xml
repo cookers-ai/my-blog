@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--指定映射配置文件的命名空间，必须与接口类的包名和文件名保持一致-->
+<mapper namespace="com.itheima.big_event.mapper.ArticleMapper">
+<!--    动态sql语句-->
+    <select id="list" resultType="com.itheima.big_event.pojo.Article">
+        select * from article
+        <where>
+            <if test="userId != null">
+                create_user = #{userId}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
+    <!--更新文章-->
+    <!--当有对应属性值时，才会执行该属性值的sql语句-->
+    <update id="update" >
+       update article
+       <set>
+           <if test="title != null">
+               title = #{title},
+           </if>
+           <if test="content != null">
+               content = #{content},
+           </if>
+           <if test="coverImg != null">
+               cover_img = #{coverImg},
+           </if>
+           <if test="state != null">
+               state = #{state},
+           </if>
+           <if test="categoryId != null">
+               category_id = #{categoryId},
+           </if>
+           <if test="updateTime != null">
+               update_time = #{updateTime},
+           </if>
+           where id = #{id}
+       </set>
+    </update>
+    <select id="adminList" resultType="com.itheima.big_event.pojo.Article">
+        select * from article
+        <where>
+            <if test="userId != null and userId != ''">
+                create_user = #{userId}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
+    <!-- 统计总条数 -->
+<select id="count" resultType="java.lang.Long">
+        select count(*) from article
+
+       where state = '已发布'
+        <if test="categoryId != null">
+            and category_id = #{categoryId}
+        </if>
+    </select>
+
+    <!-- 分页查询文章 -->
+    <select id="selectByPage" resultType="com.itheima.big_event.pojo.Article">
+        SELECT
+        id, title, cover_img, create_time,
+        category_id, create_user, view_count, like_count, comment_count
+        FROM article
+        WHERE state = '已发布'
+        <if test="categoryId != null">
+            AND category_id = #{categoryId}
+        </if>
+        <choose>
+            <when test="sort == 'hot'">
+                ORDER BY view_count DESC
+            </when>
+            <otherwise>
+                ORDER BY create_time DESC
+            </otherwise>
+        </choose>
+        LIMIT #{start}, #{pageSize}
+    </select>
+</mapper>

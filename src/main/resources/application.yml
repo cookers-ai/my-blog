@@ -1,0 +1,36 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/big_event?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: ${DB_PASSWORD:}
+  application:
+    name: RedisTemplate
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: ${REDIS_PASSWORD:}
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 10000ms
+
+jwt:
+  secret: ${JWT_SECRET:}
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+oss:
+  access-key: ${OSS_ACCESS_KEY:}
+  secret-key: ${OSS_SECRET_KEY:}
+  bucket: ${OSS_BUCKET:}
+  region: ${OSS_REGION:region2}
+  domain: ${OSS_DOMAIN:}
+  port: ${SERVER_PORT:8080}
