@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.big_event.mapper.ArticleMapper">
-    <select id="list" resultType="com.itheima.big_event.pojo.Article">
+<mapper namespace="com.miniblog.mapper.ArticleMapper">
+    <select id="list" resultType="com.miniblog.pojo.Article">
         select * from article
         <where>
             <if test="userId != null">
@@ -39,7 +39,7 @@
            where id = #{id}
        </set>
     </update>
-    <select id="adminList" resultType="com.itheima.big_event.pojo.Article">
+    <select id="adminList" resultType="com.miniblog.pojo.Article">
         select * from article
         <where>
             <if test="userId != null and userId != ''">
@@ -62,7 +62,7 @@
         </if>
     </select>
 
-    <select id="selectByPage" resultType="com.itheima.big_event.pojo.Article">
+    <select id="selectByPage" resultType="com.miniblog.pojo.Article">
         SELECT
         id, title, cover_img, create_time,
         category_id, create_user, view_count, like_count, comment_count

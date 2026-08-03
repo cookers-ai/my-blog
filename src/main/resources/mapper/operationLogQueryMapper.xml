@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.big_event.mapper.operationLogQueryMapper">
-    <select id="selectByUserNameAndModule" resultType="com.itheima.big_event.pojo.OperationLog">
+<mapper namespace="com.miniblog.mapper.operationLogQueryMapper">
+    <select id="selectByUserNameAndModule" resultType="com.miniblog.pojo.OperationLog">
         select * from operation_log
         <where>
             <if test="module != null and module != ''">

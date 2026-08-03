@@ -6,7 +6,7 @@ spring:
     username: root
     password: ${DB_PASSWORD:}
   application:
-    name: RedisTemplate
+    name: miniblog
   data:
     redis:
       host: 127.0.0.1

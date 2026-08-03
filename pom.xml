@@ -8,11 +8,11 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.itheima</groupId>
+    <groupId>com.miniblog</groupId>
     <artifactId>mini-blog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>big_event</name>
-    <description>big_event</description>
+    <name>miniblog</name>
+    <description>miniblog</description>
     <url/>
     <licenses>
         <license/>
